@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Advanced Search</title>
+    <link rel="stylesheet" href="styleadvence.css" />
+  </head>
+  <body>
+    <header>
+      <ul>
+        <li><a href="index.html">Google Search</a></li>
+        <li><a href="imagesearch.html">Image Search</a></li>
+      </ul>
+    </header>
+    <div class="seachdiv">
+      <div class="logo">
+        <img
+          src="images/googlelogo_light_color_272x92dp.png"
+          alt="google-search-logo"
+        />
+      </div>
+      <div class="searchform">
+        <form action="http://www.google.com/search">
+          <p class="description">Write important words</p>
+          <input
+            type="text"
+            name="as_q"
+            class="searchtext"
+            placeholder="All These Words Search"
+          />
+          <p class="description">Write all words inside ""</p>
+          <input
+            type="text"
+            name="as_epq"
+            class="searchtext"
+            placeholder="This Exact Word Or Phrase Search"
+          />
+          <p class="description">Write <em>or</em> between all words</p>
+          <input
+            type="text"
+            name="as_oq"
+            class="searchtext"
+            placeholder="Any Of These Wrods Search"
+          />
+          <p class="description">
+            Write <em>--</em> before your doesn't want words
+          </p>
+          <input
+            type="text"
+            name="as_eq"
+            class="searchtext"
+            placeholder="None Of These Words Search"
+          />
+          <input
+            type="submit"
+            value="Google Advanced Search"
+            class="searchbutton"
+          />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
