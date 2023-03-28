@@ -1,3 +1,7 @@
+* {
+  font-family: "Work Sans", sans-serif;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -42,15 +46,29 @@ img {
 }
 .searchbutton {
   display: block;
-  width: 400px;
+  width: 200px;
   margin: 15px auto;
+  height: 30px;
+  background-color: rgb(44, 44, 44);
+  color: white;
+  border: 1px solid rgb(156, 154, 154);
+  border-radius: 10px;
 }
 .searchtext {
-  width: 400px;
+  min-width: 400px;
   border-radius: 10px;
   background-color: rgb(44, 44, 44);
   border: 1px solid rgb(156, 154, 154);
   height: 30px;
   color: whitesmoke;
   text-align: center;
+  width: 30%;
+}
+
+.searchbutton:hover {
+  background-color: grey;
+}
+
+.searchtext:hover {
+  background-color: rgb(49, 49, 49);
 }
