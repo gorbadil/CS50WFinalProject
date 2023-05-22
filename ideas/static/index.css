@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+body {
+  background-color: rgb(226, 226, 226);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Title Area */
+.title-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  width: 100vw;
+  margin: 2rem 0 0;
+}
+
+/* Adding Idea */
+.addingbutton {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.btn {
+  max-width: 100px;
+  position: relative;
+  left: -100px;
+}
+
+/* Idea Area */
+
+/* Idea Cards */
+
+.card {
+  margin: 10px;
+  min-width: 250px;
+  position: relative;
+  min-height: 150px;
+}
+
+.card-link {
+  text-decoration: none;
+  color: black;
+  float: right;
+}
+
+.card-user {
+  float: left;
+  position: absolute;
+  left: 0;
+}
+
+/* Add Idea */
+
+.addform {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 30%);
+}
+#addideaform {
+  background-color: blueviolet;
+  padding: 0 20vw;
+}
+
+/* Footer */
+.footer {
+  margin-top: auto;
+  position: absolute;
+  display: inline-block;
+  bottom: 0;
+  text-align: center;
+  width: 100vw;
+}
+.footer-info {
+  margin: 0;
+  padding: 0;
+}

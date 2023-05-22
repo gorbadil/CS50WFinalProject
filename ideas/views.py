@@ -1,23 +1,46 @@
 from django.shortcuts import render, HttpResponseRedirect
-from django.http import HttpResponse
-from ideas.models import Idea
+from django.http import HttpResponse, JsonResponse
+from django.core import serializers
+from .models import Idea
+
+# how can i do JsonResponse with Django?
 
 
 # Create your views here.
 
+
 def index(req):
+    return render(req, "index.html")
+
+
+def allideas(req):
     idea = Idea.objects.order_by("created_at")
-    output = []
-    for i in idea:
-        output.append({
-            "title": i.title,
-            "desc": i.description,
-            "date": i.created_at,
-            "user": i.user
-        })
-    # output = {"title": ", ".join([i.title for i in idea]),
-    #           "desc": ", ".join([i.description for i in idea]),
-    #           "created_at": ([i.created_at for i in idea]),
-    #           "user": ", ".join([i.user for i in idea]),
-    #           }
-    return HttpResponse(output)
+    data = serializers.serialize("json", idea)
+    return HttpResponse(data, content_type="application/json")
+
+
+def add_idea(req):
+    if req.method == "POST":
+        title = req.POST.get("title")
+        description = req.POST.get("description")
+        user = req.POST.get("user")
+        Idea.objects.create(title=title, description=description, user=user)
+        return HttpResponseRedirect("/")
+    return render(req, "add_idea.html")
+
+
+def edit_idea(req, id):
+    if req.method == "POST":
+        title = req.POST.get("title")
+        description = req.POST.get("description")
+        user = req.POST.get("user")
+        Idea.objects.filter(id=id).update(
+            title=title, description=description, user=user
+        )
+        return HttpResponseRedirect("/")
+    return render(req, "edit_idea.html", {"id": id})
+
+
+def delete_idea(req, id):
+    Idea.objects.filter(id=id).delete()
+    return HttpResponseRedirect("/")
