@@ -9,7 +9,8 @@ class Idea(models.Model):
     description = models.TextField()
     created_at = models.DateTimeField(default=datetime.datetime.now)
     user = models.CharField(max_length=50)
+
     def __str__(self):
         return self.title
-
-        
+    
+    
