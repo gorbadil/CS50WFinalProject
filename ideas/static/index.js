@@ -35,23 +35,28 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 addbtn.addEventListener("click", () => {
-  let div = document.createElement("div");
-  div.className = "addform";
-  div.innerHTML = `<form id="addideaform">
+  // let div = document.createElement("div");
+  let formdiv = document.querySelector(".addform");
+  formdiv.style.display = "flex"
+  let form = document.querySelector("#addideaform");
+  let hidediv = document.querySelector(".hidediv")
+  // div.className = "addform";
+  form.style.display = "flex";
+  hidediv.innerHTML = `<div id="formdiv"
     <div class="mb-3">
-      <label for="ideatitle" class="form-label">Idea Title</label>
-      <input type="text" class="form-control" id="ideatitle" aria-describedby="emailHelp">
+    <label for="ideatitle" class="form-label">Idea Title</label>
+    <input type="text" name="title" class="form-control" id="ideatitle" aria-describedby="emailHelp">
     </div>
     <div class="mb-3">
-      <label for="ideadesc" class="form-label">Idea Description</label>
-      <textarea type="text" class="form-control" id="ideadesc"></textarea>
+    <label for="ideadesc" class="form-label">Idea Description</label>
+    <textarea type="text" name="description" class="form-control" id="ideadesc"></textarea>
     </div>
     <button type="submit" id="submit-btn" class="btn btn-primary">Submit</button>
-  </form>`;
-  document.body.appendChild(div);
-  div.addEventListener("click", (event) => {
+  </div>`;
+  // form.appendChild(div);
+  formdiv.addEventListener("click", (event) => {
     if (event.target.tagName == "DIV") {
-      div.style.display = "none";
+      formdiv.style.display = "none";
     }
   });
 });
