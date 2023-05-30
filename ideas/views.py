@@ -23,10 +23,8 @@ def add_idea(req):
     if req.method == "POST":
         title = req.POST.get("title")
         description = req.POST.get("description")
-        # user = req.POST.get("user")
-        Idea.objects.create(title=title, description=description,
-                            # user=user
-                            )
+        user = req.POST.get("user")
+        Idea.objects.create(title=title, description=description, user=user)
         return HttpResponseRedirect("/")
     return render(req, "add_idea.html")
 
@@ -44,5 +42,7 @@ def edit_idea(req, id):
 
 
 def delete_idea(req, id):
-    Idea.objects.filter(id=id).delete()
+    if req.method == "DELETE":
+        Idea.objects.filter(id=id).delete()
+        return HttpResponseRedirect("/")
     return HttpResponseRedirect("/")

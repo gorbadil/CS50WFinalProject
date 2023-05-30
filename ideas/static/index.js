@@ -1,5 +1,5 @@
 const mainDiv = document.querySelector("#ideas");
-const addbtn = document.querySelector(".addingbutton");
+const addbtn = document.querySelector("#btnforadd");
 
 const getIdeas = async () => {
   const res = await fetch("allideas");
@@ -9,7 +9,6 @@ const getIdeas = async () => {
 
 document.addEventListener("DOMContentLoaded", async () => {
   let data = await getIdeas();
-  // console.log(data)
   data.forEach((i) => {
     let div = document.createElement("div");
     div.className = "col-lg-4 col-md-6 col-sm-12";
@@ -25,22 +24,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     mainDiv.appendChild(div);
   });
   data.forEach((j) => {
-    let deletebutton = document.createElement("button");
-    deletebutton.className = "deletebutton";
-    deletebutton.innerHTML = "X";
-    let ideaid = document.querySelector(`#id${j.pk} h5`);
-    deletebutton.className += ` id${j.pk}`;
-    ideaid.appendChild(deletebutton);
+    let username = localStorage.getItem("username");
+    if (j.fields.user == username) {
+      let deletebutton = document.createElement("button");
+      deletebutton.className = "deletebutton";
+      deletebutton.innerHTML = "X";
+      let ideaid = document.querySelector(`#id${j.pk} h5`);
+      deletebutton.className += ` ${j.pk}`;
+      ideaid.appendChild(deletebutton);
+      deletebutton.addEventListener("click", (e) => {
+        deleteIdea(e.target.classList[1]);
+      });
+    }
   });
 });
 
 addbtn.addEventListener("click", () => {
-  // let div = document.createElement("div");
   let formdiv = document.querySelector(".addform");
-  formdiv.style.display = "flex"
+  formdiv.style.display = "flex";
   let form = document.querySelector("#addideaform");
-  let hidediv = document.querySelector(".hidediv")
-  // div.className = "addform";
+  let hidediv = document.querySelector(".hidediv");
+  let username = localStorage.getItem("username");
   form.style.display = "flex";
   hidediv.innerHTML = `<div id="formdiv"
     <div class="mb-3">
@@ -51,12 +55,31 @@ addbtn.addEventListener("click", () => {
     <label for="ideadesc" class="form-label">Idea Description</label>
     <textarea type="text" name="description" class="form-control" id="ideadesc"></textarea>
     </div>
+    <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    <input value="${username}" type="text" name="user" class="form-control" id="username" aria-describedby="emailHelp">
+    </div>
     <button type="submit" id="submit-btn" class="btn btn-primary">Submit</button>
   </div>`;
-  // form.appendChild(div);
   formdiv.addEventListener("click", (event) => {
-    if (event.target.tagName == "DIV") {
+    let setname = document.querySelector("#username");
+    localStorage.setItem("username", setname.value);
+    // console.log(event)
+    if (event.target.className == "addform") {
       formdiv.style.display = "none";
     }
   });
 });
+
+const deleteIdea = (id) => {
+  const csrf = document.cookie
+    .split("; ")
+    .find((cookie) => cookie.startsWith("csrftoken="))
+    .split("=")[1];
+  console.log(csrf);
+  fetch(`deleteidea/${id}/`, {
+    method: "DELETE",
+    headers: { "X-CSRFToken": `${csrf}` },
+  });
+  location.reload();
+};
