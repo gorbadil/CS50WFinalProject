@@ -33,8 +33,7 @@ p {
 
 /* Adding Idea Button */
 .addingbutton {
-  width: 100vw;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: flex-end;
 }
@@ -74,14 +73,14 @@ p {
   float: left;
   font-weight: bolder;
 }
-.deletebutton{
+.deletebutton {
   position: absolute;
   right: 0;
   box-shadow: none;
   border: none;
   transition: 200ms;
 }
-.deletebutton:hover{
+.deletebutton:hover {
   color: red;
 }
 /* Add Idea */
@@ -95,7 +94,7 @@ p {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 30%);
+  background-color: rgba(0, 0, 0, 40%);
   z-index: 1;
 }
 #addideaform {
@@ -103,8 +102,11 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(153, 152, 235);
+  background: linear-gradient(45deg, rgb(150, 50, 217), rgb(43, 183, 151));
+  border-radius: 25px;
   padding: 30px;
+  font-weight: bolder;
+  color: whitesmoke;
 }
 #ideatitle {
   width: 400px;
@@ -114,7 +116,16 @@ p {
   height: 6rem;
 }
 #submit-btn {
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(225deg, rgb(150, 50, 217), rgb(43, 183, 151));
+  border: none;
+  outline: none;
+  transition: 400ms;
+}
+#submit-btn:hover {
+  background: rgb(43, 183, 151);
+  transform: translateX(-50%) scale(1.1);
 }
 
 /* Footer */
