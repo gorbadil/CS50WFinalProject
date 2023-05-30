@@ -46,3 +46,23 @@ def delete_idea(req, id):
         Idea.objects.filter(id=id).delete()
         return HttpResponseRedirect("/")
     return HttpResponseRedirect("/")
+
+
+def edit_idea(req, id):
+    if req.method == "POST":
+        title = req.POST.get("title")
+        description = req.POST.get("description")
+        user = req.POST.get("user")
+        Idea.objects.filter(pk=id).update(
+            title=title, description=description, user=user
+        )
+        return HttpResponseRedirect("/")
+    idea = Idea.objects.get(pk=id)
+    print(idea.description)
+    data = {
+        "title": idea.title,
+        "description": idea.description,
+        "user": idea.user,
+        "id": id,
+    }
+    return JsonResponse(data)
