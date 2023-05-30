@@ -87,7 +87,7 @@ p {
 /* Add Idea */
 
 .addform {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -96,6 +96,7 @@ p {
   height: 100vh;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 30%);
+  z-index: 1;
 }
 #addideaform {
   display: flex;

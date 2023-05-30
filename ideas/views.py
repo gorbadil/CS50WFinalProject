@@ -23,8 +23,10 @@ def add_idea(req):
     if req.method == "POST":
         title = req.POST.get("title")
         description = req.POST.get("description")
-        user = req.POST.get("user")
-        Idea.objects.create(title=title, description=description, user=user)
+        # user = req.POST.get("user")
+        Idea.objects.create(title=title, description=description,
+                            # user=user
+                            )
         return HttpResponseRedirect("/")
     return render(req, "add_idea.html")
 
