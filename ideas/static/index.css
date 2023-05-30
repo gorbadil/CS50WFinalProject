@@ -82,6 +82,16 @@ p {
 }
 .deletebutton:hover {
   color: red;
+  transform: translateY(-3px);
+}
+.editbutton {
+  position: absolute;
+  right: 2rem;
+  border: none;
+  transition: 200ms;
+}
+.editbutton:hover {
+  transform: translateY(-3px);
 }
 /* Add Idea */
 
