@@ -31,7 +31,7 @@ p {
   margin: 2rem 0 0;
 }
 
-/* Adding Idea */
+/* Adding Idea Button */
 .addingbutton {
   width: 100vw;
   display: flex;
@@ -48,25 +48,42 @@ p {
 
 /* Idea Cards */
 
-.card {
-  margin: 10px;
-  min-width: 250px;
+.idea-card {
+  background-color: whitesmoke;
+  max-width: 400px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
-  min-height: 150px;
+  margin: 1rem 0;
 }
-
+.card-title {
+  border-bottom: 1px solid #444;
+  position: relative;
+}
+.card-text {
+  margin: 1rem 0;
+}
 .card-link {
   text-decoration: none;
   color: black;
   float: right;
 }
-
 .card-user {
   float: left;
-  position: absolute;
-  left: 0;
+  font-weight: bolder;
 }
-
+.deletebutton{
+  position: absolute;
+  right: 0;
+  box-shadow: none;
+  border: none;
+  transition: 200ms;
+}
+.deletebutton:hover{
+  color: red;
+}
 /* Add Idea */
 
 .addform {
@@ -81,8 +98,22 @@ p {
   background-color: rgba(0, 0, 0, 30%);
 }
 #addideaform {
-  background-color: blueviolet;
-  padding: 0 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(153, 152, 235);
+  padding: 30px;
+}
+#ideatitle {
+  width: 400px;
+}
+#ideadesc {
+  width: 400px;
+  height: 6rem;
+}
+#submit-btn {
+  left: 0;
 }
 
 /* Footer */
