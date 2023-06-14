@@ -42,7 +42,7 @@ To run the Movie Search App locally, follow these steps:
 
 * Clone the repository
 * Navigate to the project directory: cd movie-search-app
-* Open the index.html file in your preferred web browser.
+* Run "python manage.py runserver" command
 
 # Usage
 
